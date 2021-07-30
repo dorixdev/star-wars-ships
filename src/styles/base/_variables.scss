@@ -1,0 +1,37 @@
+@font-face {
+  font-family: 'sf_distant_galaxyregular';
+  src: url('../../fonts/sfdistantgalaxy-0l3d-webfont.woff2') format('woff2'),
+    url('../../fonts/sfdistantgalaxy-0l3d-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$headings-font-family: 'sf_distant_galaxyregular';
+$primary: #c7161c;
+$secondary: #c9d6df;
+$success: #11d3bc;
+$danger: #f44336;
+$info: #07689f;
+$warning: #ffe81f;
+$light: #d3d3d3;
+$dark: #1d1c1c;
+$grey: #686868;
+$white: #ffffff;
+$gold: #cc9300;
+$greenGoogle: #3cba54;
+$yellowGoogle: #f4c20d;
+$redGoogle: #db3236;
+$blueGoogle: #4885ed;
+$lightGray: #eeeeee;
+
+$theme-color: (
+  $primary,
+  $secondary,
+  $success,
+  $danger,
+  $info,
+  $warning,
+  $light,
+  $dark,
+  $white
+);
