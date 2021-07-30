@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import { App } from './App';
-import * as serviceWorkerRegistration from './app/config/serviceWorkerRegistration';
-import reportWebVitals from './app/config/reportWebVitals';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+import reportWebVitals from './reportWebVitals';
 
 import './styles/index.scss';
 
