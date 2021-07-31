@@ -4,6 +4,7 @@ import {
   Redirect,
   Route,
 } from 'react-router-dom';
+import { ErrorPage } from '../../pages/ErrorPage';
 import { FavoritesPage } from '../../pages/FavoritesPage';
 import { HomePage } from '../../pages/HomePage';
 import { LoginPage } from '../../pages/LoginPage';
@@ -20,8 +21,9 @@ export const AppRouter = () => {
       <div>
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route exact path="/:episodeid" component={MoviePage} />
-          <Route exact path="/:episodeid/:shipid" component={ShipPage} />
+          <Route exact path="/info/:episodeid" component={MoviePage} />
+          <Route exact path="/info/:episodeid/:shipid" component={ShipPage} />
+          <Route exact path="/404" component={ErrorPage} />
           <PublicRoute
             exact
             path="/login"
