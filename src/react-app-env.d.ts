@@ -1,4 +1,5 @@
 /// <reference types="react-scripts" />
+
 type Params = {
   episodeid?: string;
   shipid?: string;
@@ -27,4 +28,9 @@ type Starship = {
 type Poster = {
   episodeID: number;
   src: string;
+};
+
+type ActionReducer = {
+  type: string;
+  payload?: any;
 };

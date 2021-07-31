@@ -1,11 +1,16 @@
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { RootState } from '../app/config/store';
+import { Loader } from '../components/Loader';
 import { useMovies } from '../hooks/useMovies';
 
 export const HomePage = () => {
-  const { loading, movies } = useMovies();
+  const { movies } = useMovies();
 
-  if (loading) {
-    return <div>Loading...</div>;
+  const { isLoading } = useSelector((state: RootState) => state.ui);
+
+  if (isLoading) {
+    return <Loader />;
   }
 
   return (
