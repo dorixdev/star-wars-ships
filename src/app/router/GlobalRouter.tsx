@@ -1,5 +1,6 @@
-import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
+import { Loader } from '../../components/Loader';
+import { useLogged } from '../../hooks/useLogged';
 import { ErrorPage } from '../../pages/ErrorPage';
 import { FavoritesPage } from '../../pages/FavoritesPage';
 import { HomePage } from '../../pages/HomePage';
@@ -8,7 +9,12 @@ import { ShipPage } from '../../pages/ShipPage';
 import { PrivateRoute } from './PrivateRoute';
 
 export const GlobalRouter = () => {
-  const isLoggedIn: boolean = false;
+  const { checking, uid } = useLogged();
+
+  if (checking) {
+    return <Loader />;
+  }
+
   return (
     <div>
       <Switch>
@@ -20,7 +26,7 @@ export const GlobalRouter = () => {
           exact
           path="/favorites"
           component={FavoritesPage}
-          isLoggedIn={isLoggedIn}
+          isLoggedIn={!!uid}
         />
         <Redirect to="/" />
       </Switch>

@@ -4,6 +4,7 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 
 import './styles/index.scss';
+import 'animate.css'
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

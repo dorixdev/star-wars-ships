@@ -8,7 +8,7 @@ export const App = () => {
   return (
     <Provider store={store}>
       <ApolloProvider client={client}>
-        <main className="container justify-content-center text-center text-warning py-4">
+        <main className="container justify-content-center text-center text-warning">
           <AppRouter />
         </main>
       </ApolloProvider>

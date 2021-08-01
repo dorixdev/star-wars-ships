@@ -40,3 +40,16 @@ type ActionReducer = {
   type: string;
   payload?: any;
 };
+
+type FetchData = {
+  name?: string;
+  email?: string;
+  password?: string;
+};
+
+type LoginState = {
+  name?: string;
+  email: string;
+  password: string;
+  remember?: boolean;
+};

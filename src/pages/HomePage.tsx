@@ -26,7 +26,7 @@ export const HomePage = () => {
             className="col-6 col-lg-4 my-3"
             key={film.episodeID}
           >
-            <div className="card h-100">
+            <div className="card card-poster h-100">
               <div className="card-block">
                 <img
                   className="card-img-top"
