@@ -1,4 +1,4 @@
-import { FormEvent } from 'react';
+import { FormEvent, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { startLogin } from '../app/services/auth/actions';
@@ -14,7 +14,13 @@ export const LoginPage = () => {
     remember: false,
   };
 
-  const { form, handleInputChange, toggleCheck } = useForm(initialForm);
+  const { form, setForm, handleInputChange, toggleCheck } =
+    useForm(initialForm);
+
+  useEffect(() => {
+    const email = localStorage.getItem('email');
+    email && setForm((form) => ({ ...form, email, remember: true }));
+  }, [setForm]);
 
   const { email, password, remember } = form;
 
