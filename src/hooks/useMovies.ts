@@ -3,26 +3,28 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { GET_ALL_MOVIES } from '../app/gql/querys';
 import { loadingEnd, loadingStart } from '../app/services/ui/actions';
-import postersFilms from '../helpers/postersFilms';
+import { filterByEpisodeID } from '../helpers/filterByEpisodeID';
 
 export const useMovies = () => {
   const dispatch = useDispatch();
-  const { loading, data } = useQuery(GET_ALL_MOVIES);
+  const { loading, data, error } = useQuery(GET_ALL_MOVIES);
   const [movies, setMovies] = useState<Film[]>([]);
 
   useEffect(() => {
     dispatch(loadingStart());
-    if (!loading) {
-      const films = data?.allFilms.films.map((film: Film) => ({
+    if (!loading && !error) {
+      const {
+        allFilms: { films: filmsGqlResponse },
+      } = data;
+
+      const films = filmsGqlResponse.map((film: Film) => ({
         ...film,
-        src: postersFilms
-          .filter((poster: Poster) => poster.episodeID === film.episodeID)
-          .map((poster: Poster) => poster.src)[0],
+        src: filterByEpisodeID(film.episodeID).src,
       }));
       setMovies(films);
       dispatch(loadingEnd());
     }
-  }, [loading, data, dispatch]);
+  }, [loading, data, error, dispatch]);
 
   return {
     movies,

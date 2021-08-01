@@ -1,10 +1,5 @@
-@import './base/variables';
 @import './base/settings';
 @import './loader';
-
-body {
-  background-color: $dark;
-}
 
 .card {
   cursor: pointer;

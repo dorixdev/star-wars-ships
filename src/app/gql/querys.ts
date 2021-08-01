@@ -13,8 +13,8 @@ export const GET_ALL_MOVIES = gql`
 `;
 
 export const GET_MOVIE_WITH_STARSHIPS_INFO = gql`
-  query GetMovie($id: ID!) {
-    film(id: $id) {
+  query GetMovie($filmID: ID!) {
+    film(id: $filmID) {
       id
       episodeID
       title
@@ -32,10 +32,34 @@ export const GET_MOVIE_WITH_STARSHIPS_INFO = gql`
           starshipClass
           filmConnection {
             films {
+              id
               episodeID
               title
             }
           }
+        }
+      }
+    }
+  }
+`;
+
+export const GET_MOVIE_WITH_ALL_STARSHIPS_INFO = gql`
+  query GetShip($shipID: ID!) {
+    starship(id: $shipID) {
+      id
+      name
+      model
+      manufacturers
+      costInCredits
+      length
+      maxAtmospheringSpeed
+      crew
+      passengers
+      starshipClass
+      filmConnection {
+        films {
+          episodeID
+          title
         }
       }
     }

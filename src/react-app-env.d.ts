@@ -8,8 +8,11 @@ type Params = {
 type Film = {
   id: string;
   episodeID: number;
-  src?: string;
   title: string;
+  src?: string;
+  starshipConnection: {
+    starships: Starship[];
+  };
 };
 
 type Starship = {
@@ -22,7 +25,10 @@ type Starship = {
   maxAtmospheringSpeed: number;
   crew: string;
   passengers: string;
-  starShipClass: string;
+  starshipClass: string;
+  filmConnection: {
+    films: Film[];
+  };
 };
 
 type Poster = {

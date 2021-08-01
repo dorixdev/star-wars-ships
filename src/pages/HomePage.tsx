@@ -16,7 +16,7 @@ export const HomePage = () => {
   return (
     <>
       <div className="row">
-        <h1 className="mb-4 display-3">Star Wars Ships</h1>
+        <h1 className="mb-4 display-3 text-uppercase">Star Wars Ships</h1>
       </div>
 
       <div className="row">
