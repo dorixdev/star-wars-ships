@@ -12,7 +12,7 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow">
       <div className="container">
         <Link to="/" className="navbar-brand d-flex align-items-center">
           <img
@@ -25,13 +25,13 @@ export const Navbar = () => {
           SW Ships
         </Link>
 
-        <ul className="navbar-nav d-flex flex-row">
+        <ul className="navbar-nav d-flex align-items-center">
           {!!!uid ? (
             <>
               <li className="nav-item">
                 <Link
                   to="/auth/login"
-                  className="btn btn-primary text-uppercase"
+                  className="btn btn-sm btn-primary text-uppercase"
                 >
                   Login
                 </Link>
@@ -39,7 +39,7 @@ export const Navbar = () => {
               <li className="nav-item ms-2">
                 <Link
                   to="/auth/register"
-                  className="btn btn-outline-gold text-uppercase"
+                  className="btn btn-sm btn-outline-gold text-uppercase"
                 >
                   Register
                 </Link>
@@ -55,7 +55,7 @@ export const Navbar = () => {
               <li className="nav-item ms-2">
                 <button
                   onClick={handleLogout}
-                  className="btn btn-outline-danger text-uppercase"
+                  className="btn btn-sm btn-outline-danger text-uppercase"
                 >
                   Logout
                 </button>

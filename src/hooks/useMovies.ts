@@ -8,7 +8,7 @@ import { filterByEpisodeID } from '../helpers/filterByEpisodeID';
 export const useMovies = () => {
   const dispatch = useDispatch();
   const { loading, data, error } = useQuery(GET_ALL_MOVIES);
-  const [movies, setMovies] = useState<Film[]>([]);
+  const [movies, setMovies] = useState<Film[] | null>(null);
 
   useEffect(() => {
     dispatch(loadingStart());
@@ -32,5 +32,6 @@ export const useMovies = () => {
 
   return {
     movies,
+    error,
   };
 };

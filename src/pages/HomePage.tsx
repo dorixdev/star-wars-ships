@@ -1,13 +1,16 @@
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { RootState } from '../app/config/store';
 import { Loader } from '../components/Loader';
 import { useMovies } from '../hooks/useMovies';
 
 export const HomePage = () => {
-  const { movies } = useMovies();
-
   const { isLoading } = useSelector((state: RootState) => state.ui);
+  const { movies, error } = useMovies();
+
+  if (error) {
+    return <Redirect to="/404" />;
+  }
 
   if (isLoading) {
     return <Loader />;

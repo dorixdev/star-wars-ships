@@ -1,6 +1,14 @@
 @import './base/settings';
 @import './loader';
 
+body {
+  background: url('https://i.ytimg.com/vi/0hR3tEHMS1o/maxresdefault.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
 .card-poster {
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
