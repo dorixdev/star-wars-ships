@@ -1,7 +1,4 @@
-
-import { Link } from 'react-router-dom';
 import postersFilms from '../../helpers/postersFilms';
-
 
 interface Props {
   starship: Starship;
@@ -60,13 +57,11 @@ export const ShipInfo = ({ starship }: Props) => {
         <h6>Appearances in other films:</h6>
         <div className="row justify-content-around">
           {starship.filmConnection.films.map(({ title, id, episodeID }) => (
-            <div
-              className="col-6 col-lg-4 card-poster"
-              key={id}
-            >
+            <div className="col-6 col-lg-4 card-poster" key={id}>
               <img
                 src={
-                  postersFilms.find((poster) => poster.episodeID === episodeID)?.src
+                  postersFilms.find((poster) => poster.episodeID === episodeID)
+                    ?.src
                 }
                 alt={title}
                 className="img-fluid mb-3"
