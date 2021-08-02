@@ -82,7 +82,8 @@ const login = (user: { uid: string; name: string }) => ({
 
 export const startLogout = () => {
   return (dispatch: Dispatch) => {
-    localStorage.clear();
+    localStorage.removeItem('token');
+    localStorage.removeItem('token-init-date');
     dispatch(logout());
   };
 };

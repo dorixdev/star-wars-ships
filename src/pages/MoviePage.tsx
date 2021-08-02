@@ -5,6 +5,7 @@ import { Loader } from '../components/Loader';
 import { generateSlug } from '../helpers/generateSlug';
 import { romanize } from '../helpers/romanize';
 import { useMovie } from '../hooks/useMovie';
+import posters from '../helpers/postersFilms';
 
 export const MoviePage = () => {
   const { episodeid = null } = useParams<Params>();
@@ -21,7 +22,7 @@ export const MoviePage = () => {
   }
 
   return (
-    <div className="container">
+    <div className="container py-4">
       {movie && starships && (
         <>
           <div className="py-4 bg-dark mb-4">
@@ -73,7 +74,11 @@ export const MoviePage = () => {
                       <br />
 
                       <b className="text-uppercase">Cost in Credits: </b>
-                      <span className="ms-3">{starship?.costInCredits}</span>
+                      <span className="ms-3">
+                        {starship?.costInCredits
+                          ? starship.costInCredits
+                          : 'unknow'}
+                      </span>
                       <br />
 
                       <b className="text-uppercase">Length: </b>
@@ -82,7 +87,9 @@ export const MoviePage = () => {
 
                       <b className="text-uppercase">Max Atmosphering Speed: </b>
                       <span className="ms-3">
-                        {starship?.maxAtmospheringSpeed}
+                        {starship?.maxAtmospheringSpeed
+                          ? starship.maxAtmospheringSpeed
+                          : 'unknow'}
                       </span>
                       <br />
 
@@ -99,9 +106,30 @@ export const MoviePage = () => {
 
                       <br />
                     </p>
-                    <p>
-                      {JSON.stringify(starship.filmConnection.films, null, 2)}
-                    </p>
+                    <div className="container">
+                      <h6>Appearances in other films:</h6>
+                      <div className="row justify-content-around">
+                        {starship.filmConnection.films.map(
+                          ({ title, id, episodeID }) => (
+                            <Link
+                              to={`/info/${id}`}
+                              className="col-6 col-lg-4 card-poster"
+                              key={id}
+                            >
+                              <img
+                                src={
+                                  posters.find(
+                                    (poster) => poster.episodeID === episodeID
+                                  )?.src
+                                }
+                                alt={title}
+                                className="img-fluid"
+                              />
+                            </Link>
+                          )
+                        )}
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>

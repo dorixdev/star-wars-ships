@@ -33,7 +33,7 @@ export const useMovie = (episodeid: string | null) => {
       });
 
       setStarships([...starships]);
-      setTimeout(() => dispatch(loadingEnd()), 2000);
+      setTimeout(() => dispatch(loadingEnd()), 1000);
     }
   }, [loading, data, error, dispatch]);
 

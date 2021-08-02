@@ -12,6 +12,9 @@ export const useMovies = () => {
 
   useEffect(() => {
     dispatch(loadingStart());
+  }, [dispatch]);
+
+  useEffect(() => {
     if (!loading && !error) {
       const {
         allFilms: { films: filmsGqlResponse },
@@ -23,6 +26,7 @@ export const useMovies = () => {
       }));
       setMovies(films);
       dispatch(loadingEnd());
+      setTimeout(() => dispatch(loadingEnd()), 1000);
     }
   }, [loading, data, error, dispatch]);
 

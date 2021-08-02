@@ -24,7 +24,7 @@ export const RegisterPage = () => {
   };
 
   return (
-    <div className="login container align-items-center justify-content-center d-flex text-light animate__animated animate__flipInY">
+    <div className="login container align-items-center justify-content-center d-flex text-light animate__animated animate__fadeIn">
       <div className="row my-auto w-100 justify-content-center">
         <div className="col-12 col-md-8 col-lg-5 my-2 bg-dark card shadow p-5 align-items-center">
           <h2 className="fw-bold text-center pb-3 text-primary">Register</h2>
