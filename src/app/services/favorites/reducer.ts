@@ -23,7 +23,7 @@ export const FavoritesReducer = (
       return {
         ...state,
         starships: state.starships.filter(
-          (starship: Starship) => starship.id !== action.payload
+          (starship: FavoriteStarship) => starship.starshipID !== action.payload
         ),
       };
     case FAV_CLEAR:

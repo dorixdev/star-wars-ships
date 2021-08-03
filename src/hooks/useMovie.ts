@@ -2,10 +2,10 @@ import { useQuery } from '@apollo/client';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../app/config/store';
-import { GET_MOVIE_WITH_STARSHIPS_INFO } from '../app/gql/querys';
 import { favStartLoading } from '../app/services/favorites/actions';
 import { loadingEnd, loadingStart } from '../app/services/ui/actions';
 import { filterByEpisodeID } from '../helpers/filterByEpisodeID';
+import { GET_MOVIE_WITH_STARSHIPS_INFO } from '../app/gql/querys';
 
 export const useMovie = (episodeid: string | null) => {
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ export const useMovie = (episodeid: string | null) => {
 
   useEffect(() => {
     const { starships: favStarships } = favorites;
-    const mapFavorites = favStarships.map(
+    const mapFavoritesID = favStarships.map(
       (fav: FavoriteStarship) => fav.starshipID
     );
 
@@ -39,7 +39,7 @@ export const useMovie = (episodeid: string | null) => {
       const mapStarships = starships.map((starship: Starship): Starship => {
         return {
           ...starship,
-          favorite: mapFavorites.includes(starship.id),
+          favorite: mapFavoritesID.includes(starship.id),
         };
       });
 

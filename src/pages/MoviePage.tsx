@@ -1,7 +1,6 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Redirect, useParams } from 'react-router-dom';
 import { RootState } from '../app/config/store';
-import { favStartRemove } from '../app/services/favorites/actions';
 import { Loader } from '../components/Loader';
 import { ShipInfo } from '../components/ships/ShipInfo';
 import { generateSlug } from '../helpers/generateSlug';
@@ -9,7 +8,6 @@ import { romanize } from '../helpers/romanize';
 import { useMovie } from '../hooks/useMovie';
 
 export const MoviePage = () => {
-  const dispatch = useDispatch();
   const { episodeid = null } = useParams<Params>();
   const { isLoading } = useSelector((state: RootState) => state.ui);
   const { movie, error, starships } = useMovie(episodeid);
@@ -21,10 +19,6 @@ export const MoviePage = () => {
   if (isLoading) {
     return <Loader />;
   }
-
-  const handleDelete = () => {
-    dispatch(favStartRemove());
-  };
 
   return (
     <div className="container py-4">

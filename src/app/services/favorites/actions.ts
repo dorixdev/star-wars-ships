@@ -4,19 +4,27 @@ import { fetchWithToken } from '../../../helpers/fetchData';
 import { RootState } from '../../config/store';
 import { FAV_ADD_NEW, FAV_LOADED, FAV_REMOVE, FAV_CLEAR } from './types';
 
-export const favStartAddNew = (favorite: FavoriteStarship) => {
+export const favStartAddNew = (starship: Starship) => {
   return async (dispatch: Dispatch, getState: () => RootState) => {
-    const { uid, name } = getState().auth;
+    const favorite: FavoriteStarship = {
+      name: starship.name,
+      starshipID: starship.id,
+    };
     try {
       const res = await fetchWithToken('favorites', favorite, 'POST');
       const body = await res.json();
       if (body.ok) {
-        const compFavorite = {
+        const compFavorite: FavoriteStarship = {
           id: body.data.id,
-          name,
-          uid,
+          name: body.data.name,
+          starshipID: body.data.starshipID,
         };
         dispatch(favAddNew(compFavorite));
+        Swal.fire({
+          title: 'Success',
+          text: 'Added to favorites!',
+          icon: 'success',
+        });
       }
     } catch (err) {
       console.log(err);
@@ -29,14 +37,22 @@ const favAddNew = (favorite: FavoriteStarship) => ({
   payload: favorite,
 });
 
-export const favStartRemove = () => {
-  return async (dispatch: Dispatch, getState: () => RootState) => {
-    const { uid } = getState().auth;
+export const favStartRemove = (starship: Starship) => {
+  return async (dispatch: Dispatch) => {
     try {
-      const res = await fetchWithToken(`favorites/${uid}`, {}, 'DELETE');
+      const res = await fetchWithToken(
+        `favorites/${starship.name}`,
+        {},
+        'DELETE'
+      );
       const body = await res.json();
       if (body.ok) {
-        dispatch(favRemove(uid));
+        dispatch(favRemove(starship.id));
+        Swal.fire({
+          title: 'Success',
+          text: 'Removed from favorites!',
+          icon: 'success',
+        });
       } else {
         Swal.fire({
           title: 'Error',

@@ -27,6 +27,7 @@ type Starship = {
   passengers: string;
   starshipClass: string;
   favorite: boolean;
+  serverID: string;
   filmConnection: {
     films: Film[];
   };
@@ -56,6 +57,7 @@ type LoginState = {
 };
 
 type FavoriteStarship = {
+  id?: string;
   name?: string;
   starshipID?: string;
 };
