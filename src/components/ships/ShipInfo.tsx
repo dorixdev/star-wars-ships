@@ -1,63 +1,54 @@
+import { useSelector } from 'react-redux';
+import { RootState } from '../../app/config/store';
 import postersFilms from '../../helpers/postersFilms';
+import { ShipInfoItem } from './ShipInfoItem';
+import starshipImg from '../../images/starship.png';
 
 interface Props {
   starship: Starship;
 }
 
 export const ShipInfo = ({ starship }: Props) => {
+  const { uid } = useSelector((state: RootState) => state.auth);
   return (
     <>
-      <h2 className="mt-3 mt-lg-0">Starship info</h2>
-      <ul className="list-group list-group-flush text-start">
-        <li className="list-group-item text-info">
-          <b className="text-uppercase">Name: </b>
-          <span className="ms-3">{starship.name}</span>
-        </li>
-        <li className="list-group-item text-info">
-          <b className="text-uppercase">Model: </b>
-          <span className="ms-3">{starship.model}</span>
-        </li>
-        <li className="list-group-item text-info">
-          <b className="text-uppercase">Manufacturers: </b>
-          <span className="ms-3">{starship.manufacturers.join(', ')}</span>
-        </li>
-        <li className="list-group-item text-info">
-          <b className="text-uppercase">Cost in Credits: </b>
-          <span className="ms-3">
-            {starship.costInCredits ? starship.costInCredits : 'unknow'}
-          </span>
-        </li>
-        <li className="list-group-item text-info">
-          <b className="text-uppercase">Length: </b>
-          <span className="ms-3">{starship.length}</span>
-        </li>
-        <li className="list-group-item text-info">
-          <b className="text-uppercase">Max Atmosphering Speed: </b>
-          <span className="ms-3">
-            {starship.maxAtmospheringSpeed
-              ? starship.maxAtmospheringSpeed
-              : 'unknow'}
-          </span>
-        </li>
-        <li className="list-group-item text-info">
-          <b className="text-uppercase">Crew: </b>
-          <span className="ms-3">{starship.crew}</span>
-        </li>
-        <li className="list-group-item text-info">
-          <b className="text-uppercase">Passengers: </b>
-          <span className="ms-3">{starship.passengers}</span>
-        </li>
-        <li className="list-group-item text-info">
-          <b className="text-uppercase">Starship Class: </b>
-          <span className="ms-3">{starship.starshipClass}</span>
-        </li>
-      </ul>
+      <div className="row align-items-start justify-content-center">
+        <div className="col-12 col-lg-6 col-xl-5 position-relative">
+          {!!uid && (
+            starship.favorite ? (
+              <button type="button" className="btn position-absolute">
+                <i className="fas fa-star text-gold fa-2x"></i>
+              </button>
+            ) : (
+              <button type="button" className="btn position-absolute">
+                <i className="far fa-star text-gold fa-2x"></i>
+              </button>
+            )
+          ) }
+          <h4 className="text-capitalize mt-3 mt-lg-0">{starship.name}</h4>
+          <img className="img-fluid" src={starshipImg} alt={starship.name} />
+        </div>
+        <ul className="col-12 col-lg-6 col-xl-7 list-group list-group-flush text-start">
+          <ShipInfoItem label="Name" text={starship.name} />
+          <ShipInfoItem label="Model" text={starship.model} />
+          <ShipInfoItem label="Manufacturers" text={starship.manufacturers} />
+          <ShipInfoItem label="Cost in Credits" text={starship.costInCredits} />
+          <ShipInfoItem label="Length" text={starship.length} />
+          <ShipInfoItem
+            label="Max Atmosphering Speed"
+            text={starship.maxAtmospheringSpeed}
+          />
+          <ShipInfoItem label="Crew" text={starship.crew} />
+          <ShipInfoItem label="Passengers" text={starship.passengers} />
+          <ShipInfoItem label="Starship Class" text={starship.starshipClass} />
+        </ul>
+      </div>
 
       <div className="container mt-4">
         <h6>Appearances in other films:</h6>
         <div className="row justify-content-around">
           {starship.filmConnection.films.map(({ title, id, episodeID }) => (
-            <div className="col-6 col-lg-4 card-poster" key={id}>
+            <div className="col-6 col-lg-2 card-poster" key={id}>
               <img
                 src={
                   postersFilms.find((poster) => poster.episodeID === episodeID)

@@ -10,7 +10,7 @@ type Film = {
   episodeID: number;
   title: string;
   src?: string;
-  starshipConnection: {
+  starshipConnection?: {
     starships: Starship[];
   };
 };
@@ -26,6 +26,7 @@ type Starship = {
   crew: string;
   passengers: string;
   starshipClass: string;
+  favorite: boolean;
   filmConnection: {
     films: Film[];
   };
@@ -52,4 +53,9 @@ type LoginState = {
   email: string;
   password: string;
   remember?: boolean;
+};
+
+type FavoriteStarship = {
+  name?: string;
+  starshipID?: string;
 };

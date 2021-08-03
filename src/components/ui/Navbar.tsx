@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { startLogout } from '../../app/services/auth/actions';
+import { favClear } from '../../app/services/favorites/actions';
 import { useLogged } from '../../hooks/useLogged';
 
 export const Navbar = () => {
@@ -9,6 +10,7 @@ export const Navbar = () => {
 
   const handleLogout = () => {
     dispatch(startLogout());
+    dispatch(favClear());
   };
 
   return (
@@ -25,7 +27,7 @@ export const Navbar = () => {
           SW Ships
         </Link>
 
-        <ul className="navbar-nav d-flex align-items-center">
+        <ul className="navbar-nav d-flex flex-row align-items-center">
           {!!!uid ? (
             <>
               <li className="nav-item">

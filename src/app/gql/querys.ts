@@ -65,3 +65,28 @@ export const GET_MOVIE_WITH_ALL_STARSHIPS_INFO = gql`
     }
   }
 `;
+
+export const GET_ALL_STARSHIPS = gql`
+  query GetStarships {
+    allStarships {
+      starships {
+        id
+        name
+        model
+        manufacturers
+        costInCredits
+        length
+        maxAtmospheringSpeed
+        crew
+        passengers
+        starshipClass
+        filmConnection {
+          films {
+            episodeID
+            title
+          }
+        }
+      }
+    }
+  }
+`;
