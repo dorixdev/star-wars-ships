@@ -7,6 +7,7 @@ interface Props {
   type: string;
   placeholder: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
+  onKeyPress?: ChangeEventHandler<HTMLInputElement>;
 }
 
 export const InputText = ({

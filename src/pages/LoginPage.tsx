@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { startLogin } from '../app/services/auth/actions';
 import { InputText } from '../components/ui/InputText';
-import { useForm } from '../hooks/useForm';
+import { useLoginForm } from '../hooks/useForm';
 
 export const LoginPage = () => {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ export const LoginPage = () => {
   };
 
   const { form, setForm, handleInputChange, toggleCheck } =
-    useForm(initialForm);
+    useLoginForm(initialForm);
 
   useEffect(() => {
     const email = localStorage.getItem('email');

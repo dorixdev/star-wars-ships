@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { startRegister } from '../app/services/auth/actions';
 import { InputText } from '../components/ui/InputText';
-import { useForm } from '../hooks/useForm';
+import { useLoginForm } from '../hooks/useForm';
 
 export const RegisterPage = () => {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ export const RegisterPage = () => {
     remember: false,
   };
 
-  const { form, handleInputChange } = useForm(initialForm);
+  const { form, handleInputChange } = useLoginForm(initialForm);
 
   const { name, email, password } = form;
 
