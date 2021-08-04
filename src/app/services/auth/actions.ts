@@ -18,7 +18,6 @@ export const startLogin = ({ email, password }: FetchData) => {
 
     if (body.ok) {
       localStorage.setItem('token', body.token);
-      localStorage.setItem('token-init-date', new Date().getTime().toString());
       dispatch(login({ uid: body.uid, name: body.name }));
     } else {
       Swal.fire('Error', body.msg || 'Rellene los campos', 'error');
@@ -41,7 +40,6 @@ export const startRegister = ({ email, password, name }: FetchData) => {
 
     if (body.ok) {
       localStorage.setItem('token', body.token);
-      localStorage.setItem('token-init-date', new Date().getTime().toString());
       dispatch(login({ uid: body.uid, name: body.name }));
     } else {
       Swal.fire('Error', body.msg || 'Rellene los campos', 'error');
@@ -57,10 +55,6 @@ export const startCheking = () => {
 
       if (body.ok) {
         localStorage.setItem('token', body.token);
-        localStorage.setItem(
-          'token-init-date',
-          new Date().getTime().toString()
-        );
         dispatch(login({ uid: body.uid, name: body.name }));
       } else {
         dispatch(checkingFinish());
@@ -83,7 +77,6 @@ const login = (user: { uid: string; name: string }) => ({
 export const startLogout = () => {
   return (dispatch: Dispatch) => {
     localStorage.removeItem('token');
-    localStorage.removeItem('token-init-date');
     dispatch(logout());
   };
 };

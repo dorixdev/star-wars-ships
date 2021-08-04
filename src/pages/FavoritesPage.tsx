@@ -38,7 +38,7 @@ export const FavoritesPage = () => {
           <h1>Favorites</h1>
         </div>
       </div>
-      {starships.length > 0 ? (
+      {starships?.length > 0 ? (
         <>
           <form
             onSubmit={handleSearch}
