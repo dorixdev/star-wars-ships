@@ -1,37 +1,93 @@
 @font-face {
   font-family: 'sf_distant_galaxyregular';
-  src: url('../../fonts/sfdistantgalaxy-0l3d-webfont.woff2') format('woff2'),
-    url('../../fonts/sfdistantgalaxy-0l3d-webfont.woff') format('woff');
+  src: url('../../fonts/headings/sfdistantgalaxy-0l3d-webfont.woff2')
+      format('woff2'),
+    url('../../fonts/headings/sfdistantgalaxy-0l3d-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
-$headings-font-family: 'sf_distant_galaxyregular';
-$primary: #c7161c;
+@font-face {
+  font-family: 'STARWARS';
+  src: url('../../fonts/headings/STARWARS.eot?') format('eot'),
+    url('../../fonts/headings/STARWARS.woff') format('woff'),
+    url('../../fonts/headings/STARWARS.ttf') format('truetype'),
+    url('../../fonts/headings/STARWARS.svg#STARWARS') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Franklin Gothic Book';
+  src: local('Franklin Gothic Book'), local('FranklinGothic-Book'),
+    url('../../fonts/base/FranklinGothic-Book.woff2') format('woff2'),
+    url('../../fonts/base/FranklinGothic-Book.woff') format('woff'),
+    url('../../fonts/base/FranklinGothic-Book.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Franklin Gothic Book';
+  src: local('Franklin Gothic Demi Cond'), local('FranklinGothic-DemiCond'),
+    url('../../fonts/base/FranklinGothic-DemiCond.woff2') format('woff2'),
+    url('../../fonts/base/FranklinGothic-DemiCond.woff') format('woff'),
+    url('../../fonts/base/FranklinGothic-DemiCond.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+$headings-font-family: 'STARWARS';
+$font-family-base: 'Franklin Gothic Book';
+// $primary: #c7161c;
+$primary: #ffe81f;
 $secondary: #c9d6df;
 $success: #11d3bc;
 $danger: #f44336;
-$info: #07689f;
+$info: #4bd5ee;
 $warning: #ffe81f;
 $light: #d3d3d3;
 $dark: #1d1c1c;
 $grey: #686868;
 $white: #ffffff;
-$gold: #cc9300;
+$black: #000000;
+$gold: #e5b13a;
 $greenGoogle: #3cba54;
 $yellowGoogle: #f4c20d;
 $redGoogle: #db3236;
 $blueGoogle: #4885ed;
 $lightGray: #eeeeee;
 
-$theme-color: (
-  $primary,
-  $secondary,
-  $success,
-  $danger,
-  $info,
-  $warning,
-  $light,
-  $dark,
-  $white
+$theme-colors: (
+  'primary': $primary,
+  'secondary': $secondary,
+  'success': $success,
+  'danger': $danger,
+  'info': $info,
+  'warning': $warning,
+  'light': $light,
+  'dark': $dark,
+  'grey': $grey,
+  'white': $white,
+  'black': $black,
+  'gold': $gold,
+  'greenGoogle': $greenGoogle,
+  'yellowGoogle': $yellowGoogle,
+  'redGoogle': $redGoogle,
+  'blueGoogle': $blueGoogle,
+  'lightGray': $lightGray,
 );
+
+$enable-rounded: true;
+$enable-shadows: true;
+$body-bg: $black;
+
+/* List groups */
+$list-group-color: $white;
+$list-group-bg: $dark;
+$list-group-hover-bg: $grey;
+$list-group-action-hover-color: $light;
+$list-group-active-bg: $light;
+$list-group-active-color: $dark;

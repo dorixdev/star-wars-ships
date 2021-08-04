@@ -1,1 +1,5 @@
-@import '~bootstrap/scss/bootstrap';
+// Default variable overrides
+@import './variables';
+
+// Required
+@import 'bootstrap/scss/bootstrap';

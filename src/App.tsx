@@ -1,7 +1,17 @@
+import { Provider } from 'react-redux';
+import { ApolloProvider } from '@apollo/client';
+import { AppRouter } from './app/router/AppRouter';
+import { store } from './app/config/store';
+import { client } from './app/config/apolloClient';
+
 export const App = () => {
   return (
-    <main className="container d-flex align-items-center justify-content-center text-center text-warning">
-      <h1>Star Wars Ships</h1>
-    </main>
+    <Provider store={store}>
+      <ApolloProvider client={client}>
+        <main>
+          <AppRouter />
+        </main>
+      </ApolloProvider>
+    </Provider>
   );
 };

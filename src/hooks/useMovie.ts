@@ -1,0 +1,61 @@
+import { useQuery } from '@apollo/client';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../app/config/store';
+import { favStartLoading } from '../app/services/favorites/actions';
+import { loadingEnd, loadingStart } from '../app/services/ui/actions';
+import { filterByEpisodeID } from '../helpers/filterByEpisodeID';
+import { GET_MOVIE_WITH_STARSHIPS_INFO } from '../app/gql/querys';
+
+export const useMovie = (episodeid: string | null) => {
+  const dispatch = useDispatch();
+  const { loading, data, error } = useQuery(GET_MOVIE_WITH_STARSHIPS_INFO, {
+    variables: {
+      filmID: episodeid,
+    },
+  });
+  const favorites = useSelector((state: RootState) => state.favorites);
+
+  const [movie, setMovie] = useState<Film | null>(null);
+  const [starships, setStarships] = useState<Starship[] | null>(null);
+
+  useEffect(() => {
+    dispatch(loadingStart());
+    dispatch(favStartLoading());
+  }, [dispatch]);
+
+  useEffect(() => {
+    const { starships: favStarships } = favorites;
+    const mapFavoritesID = favStarships.map(
+      (fav: FavoriteStarship) => fav.starshipID
+    );
+
+    if (!loading && !error) {
+      const { film } = data;
+      const {
+        starshipConnection: { starships },
+      } = film;
+
+      const mapStarships = starships.map((starship: Starship): Starship => {
+        return {
+          ...starship,
+          favorite: mapFavoritesID.includes(starship.id),
+        };
+      });
+
+      setMovie({
+        ...film,
+        src: filterByEpisodeID(film.episodeID).src,
+      });
+
+      setStarships(mapStarships);
+      setTimeout(() => dispatch(loadingEnd()), 1000);
+    }
+  }, [loading, data, error, favorites, dispatch]);
+
+  return {
+    movie,
+    error,
+    starships,
+  };
+};

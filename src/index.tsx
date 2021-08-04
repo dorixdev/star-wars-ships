@@ -1,23 +1,12 @@
 import ReactDOM from 'react-dom';
 import { App } from './App';
-import * as serviceWorkerRegistration from './app/config/serviceWorkerRegistration';
-import reportWebVitals from './app/config/reportWebVitals';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+import reportWebVitals from './reportWebVitals';
 
 import './styles/index.scss';
+import 'animate.css'
 
-// import { Provider } from 'react-redux';
-// import { createStore } from 'redux';
-// import { reducers } from './app/reducers';
-
-// const store = createStore(reducers);
-
-ReactDOM.render(
-  // <Provider store={store}>
-  <App />,
-  // </Provider>,
-
-  document.getElementById('root')
-);
+ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
