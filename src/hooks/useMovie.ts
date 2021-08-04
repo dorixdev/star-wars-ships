@@ -26,7 +26,7 @@ export const useMovie = (episodeid: string | null) => {
 
   useEffect(() => {
     const { starships: favStarships } = favorites;
-    const mapFavoritesID = favStarships.map(
+    const mapFavoritesID = favStarships?.map(
       (fav: FavoriteStarship) => fav.starshipID
     );
 
@@ -39,7 +39,7 @@ export const useMovie = (episodeid: string | null) => {
       const mapStarships = starships.map((starship: Starship): Starship => {
         return {
           ...starship,
-          favorite: mapFavoritesID.includes(starship.id),
+          favorite: mapFavoritesID?.includes(starship.id),
         };
       });
 

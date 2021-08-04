@@ -25,7 +25,6 @@ export const useMovies = () => {
         src: filterByEpisodeID(film.episodeID).src,
       }));
       setMovies(films);
-      dispatch(loadingEnd());
       setTimeout(() => dispatch(loadingEnd()), 1000);
     }
   }, [loading, data, error, dispatch]);

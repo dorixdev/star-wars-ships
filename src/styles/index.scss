@@ -2,11 +2,14 @@
 @import './loader';
 
 body {
-  background: url('https://i.ytimg.com/vi/0hR3tEHMS1o/maxresdefault.jpg');
+  background: url('https://i.ytimg.com/vi/0hR3tEHMS1o/maxresdefault.jpg')
+    no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
   background-attachment: fixed;
+  background-color: $black;
 }
 
 .card-poster {
@@ -66,12 +69,12 @@ body {
   flex-direction: column;
   justify-content: center;
   min-height: calc(100vh - 10rem);
-  strong{
+  strong {
     font-size: 1.5em;
   }
 }
 
-.btn-favorite{
+.btn-favorite {
   position: absolute;
   height: 2.5rem;
   width: 2.5rem;

@@ -19,7 +19,7 @@ export const useFavorites = () => {
 
   useEffect(() => {
     const { starships: favStarships } = favorites;
-    const mapFavorites = favStarships.map(
+    const mapFavorites = favStarships?.map(
       (fav: FavoriteStarship) => fav.starshipID
     );
 
