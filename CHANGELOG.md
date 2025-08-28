@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.4](https://github.com/dorixdev/star-wars-ships/compare/v1.0.3...v1.0.4) (2025-08-28)
+
+
+### 🐛 Bug Fixes
+
+* **CI:** :bug: correct config file path in release-please workflow ([9a06fd3](https://github.com/dorixdev/star-wars-ships/commit/9a06fd357860c5c1789059f50845b032b6979053))
+
 ## [1.0.3](https://github.com/dorixdev/star-wars-ships/compare/v1.0.2...v1.0.3) (2025-08-28)
 
 
