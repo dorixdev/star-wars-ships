@@ -3,7 +3,7 @@
 ## [1.0.3](https://github.com/dorixdev/star-wars-ships/compare/v1.0.2...v1.0.3) (2025-08-28)
 
 
-### Bug Fixes
+### 🐛 Bug Fixes
 
 * **ci:** add release please to automate CHANGELOG ([#1](https://github.com/dorixdev/star-wars-ships/issues/1)) ([734b811](https://github.com/dorixdev/star-wars-ships/commit/734b811f767eb01bee716c71307717d0cdb97015))
 
